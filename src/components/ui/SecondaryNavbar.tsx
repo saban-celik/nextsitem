@@ -1,6 +1,6 @@
 // src/components/ui/SecondaryNavbar.tsx
 import { FaEnvelope } from 'react-icons/fa'; // Sadece FaEnvelope kaldı
-import '../../assets/styles/globals.css';
+
 
 const SecondaryNavbar = () => {
   return (
