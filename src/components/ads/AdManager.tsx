@@ -1,17 +1,29 @@
 // src/components/ads/AdManager.tsx
 import { useEffect, useState } from 'react';
 
+// Google Ads için Window nesnesine özel bir tür tanımı ekliyoruz
+interface AdsWindow extends Window {
+  adsbygoogle?: {
+    push: (config: object) => void;
+  };
+  adsLoaded?: boolean;
+}
+
 const AdManager = () => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+
     const loadAds = () => {
-      if (typeof window !== 'undefined' && !(window as any).adsLoaded) {
+      // Türü AdsWindow olarak belirtiyoruz
+      const adsWindow = window as unknown as AdsWindow;
+
+      if (typeof window !== 'undefined' && !adsWindow.adsLoaded) {
         try {
-          (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-          (window as any).adsbygoogle.push({});
-          (window as any).adsLoaded = true;
+          adsWindow.adsbygoogle = adsWindow.adsbygoogle || { push: () => {} };
+          adsWindow.adsbygoogle.push({});
+          adsWindow.adsLoaded = true;
         } catch (e) {
           console.error('Google Ads loading error:', e);
         }

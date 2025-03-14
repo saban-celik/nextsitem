@@ -2,9 +2,9 @@ import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true, // SWC kullanarak minify işlemi
+  //swcMinify: true, 
   images: {
-    domains: ['www.4kfilmizlesene.org'], // Sadece bu domain üzerinden görsel yüklenmesine izin verilecek
+    domains: ['www.sabancelik-filmsitesi.com'], // Sadece bu domain üzerinden görsel yüklenmesine izin verilecek
   },
   webpack(config, { isServer }) {
     if (!isServer) {
