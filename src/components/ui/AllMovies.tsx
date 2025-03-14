@@ -1,4 +1,5 @@
 // src/components/ui/AllMovies.tsx
+import Image from 'next/image';
 import { useState } from 'react';
 
 const AllMovies = () => {
@@ -86,7 +87,7 @@ const AllMovies = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const moviesPerPage = 12; // Her sayfada 10 film gösterilecek
+  const moviesPerPage = 12;
 
   const totalPages = Math.ceil(allMovies.length / moviesPerPage);
   const startIndex = (currentPage - 1) * moviesPerPage;
@@ -102,7 +103,14 @@ const AllMovies = () => {
         {visibleMovies.map((movie, index) => (
           <div className="all-movie-card" key={index + startIndex}>
             <div className="all-movie-thumbnail-wrapper">
-              <img className="all-movie-thumbnail" src={movie.src} alt={`${movie.title} poster`} />
+              <Image
+                className="all-movie-thumbnail"
+                src={movie.src}
+                alt={`${movie.title} poster`}
+                width={210} // Resmin genişliği (örneğin 210px)
+                height={315} // Resmin yüksekliği (örneğin 315px)
+                loading="lazy" // Performans için lazy loading
+              />
             </div>
             <div className="all-movie-info">
               <h3 className="all-movie-title">{movie.title}</h3>

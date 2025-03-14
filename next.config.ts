@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.hdfilmcehennemi.nl', // Yeni alan adı eklendi
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   
