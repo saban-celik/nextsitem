@@ -1,11 +1,8 @@
-// src/components/ads/AdManager.tsx
+// src\components\ads\AdManager.tsx
 import { useEffect, useState } from 'react';
 
-// Google Ads için Window nesnesine özel bir tür tanımı ekliyoruz
 interface AdsWindow extends Window {
-  adsbygoogle?: {
-    push: (config: object) => void;
-  };
+  adsbygoogle?: { push: (config: object) => void };
   adsLoaded?: boolean;
 }
 
@@ -16,9 +13,7 @@ const AdManager = () => {
     setIsClient(true);
 
     const loadAds = () => {
-      // Türü AdsWindow olarak belirtiyoruz
       const adsWindow = window as unknown as AdsWindow;
-
       if (typeof window !== 'undefined' && !adsWindow.adsLoaded) {
         try {
           adsWindow.adsbygoogle = adsWindow.adsbygoogle || { push: () => {} };
@@ -41,8 +36,8 @@ const AdManager = () => {
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" // Kendi AdSense ID'ni ekle
-          data-ad-slot="xxxxxxxxxx" // Kendi slot ID'ni ekle
+          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+          data-ad-slot="xxxxxxxxxx"
           data-ad-format="auto"
           data-full-width-responsive="true"
         ></ins>

@@ -1,4 +1,5 @@
-import { FaFilm } from 'react-icons/fa'; // Film ikonu için react-icons kullanıyoruz
+//src\components\ui\MovieGenres.tsx
+import { FaFilm } from 'react-icons/fa';
 
 const MovieGenres = () => {
   const genres = [

@@ -294,7 +294,6 @@ body {
 
 /* All Movies Section */
 .all-movies {
-  /* width: 75%; kaldırıldı, Bootstrap col-md-9 bunu halleder */
   margin: 0;
 }
 
@@ -391,18 +390,16 @@ body {
 
 /* Content Wrapper */
 .content-wrapper {
-  /* display: flex; kaldırıldı, Bootstrap row bunu halleder */
   margin-top: 20px;
 }
 
 /* Trends */
 .trendbar {
-  /* width: 25%; kaldırıldı, Bootstrap col-md-3 bunu halleder */
   background-color: var(--veryDarkGrayishBlue);
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px; /* MovieGenres ile arasına boşluk */
+  margin-bottom: 20px;
 }
 
 /* Trends Title */
@@ -518,19 +515,18 @@ body {
 /* Genres Bar */
 .genres-bar {
   background-color: var(--darkGray);
-  padding: 15px; /* 20px'ten 15px'e küçültüldü */
+  padding: 15px;
   border-radius: 8px;
 }
 
 .genres-title {
-  font-size: 1.2rem; /* 1.5rem'den 1.2rem'e küçültüldü, butonlarla daha dengeli */
-  margin-bottom: 12px; /* 15px'ten 12px'e küçültüldü */
+  font-size: 1.2rem;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
   color: var(--almostWhite);
   border-bottom: 2px solid var(--hoverOrange);
-
 }
 
 .genres-list {
@@ -540,13 +536,13 @@ body {
 }
 
 .genre-item {
-  margin: 8px 0; /* 10px'ten 8px'e küçültüldü */
+  margin: 8px 0;
 }
 
 .genre-link {
   text-decoration: none;
   color: var(--almostWhite);
-  font-size: 0.9rem; /* 1.1rem'den 0.9rem'e küçültüldü */
+  font-size: 0.9rem;
   display: block;
 }
 
@@ -555,17 +551,131 @@ body {
   color: var(--hoverOrange);
 }
 
-
-.genre-link:hover {
-  text-decoration: underline;
-  color: var(--hoverOrange);
-}
-
-/* Sidebar (TrendsTitles ve MovieGenres için kapsayıcı) */
+/* Sidebar */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* Recent Comments */
+.recent-comments {
+  background-color: var(--veryDarkGrayishBlue);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.recent-comments-title {
+  font-size: 1.1rem;
+  color: var(--almostWhite);
+  margin-bottom: 10px;
+  text-align: left;
+  border-left: 4px solid var(--hoverOrange);
+  padding-left: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: sticky;
+  top: 0;
+  background-color: var(--veryDarkGrayishBlue);
+  z-index: 1;
+}
+
+.recent-comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-comment-item {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  background-color: var(--darkGray);
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.recent-comment-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.recent-comment-poster-wrapper {
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  border: 2px solid var(--mediumGray);
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.recent-comment-item:hover .recent-comment-poster-wrapper {
+  border-color: var(--hoverOrange);
+}
+
+.recent-comment-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.recent-comment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recent-comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.recent-comment-username {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--hoverOrange);
+  transition: color 0.3s;
+}
+
+.recent-comment-date {
+  font-size: 0.7rem;
+  color: var(--mediumGray);
+  font-style: italic;
+}
+
+.recent-comment-movie-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--almostWhite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s;
+}
+
+.recent-comment-text {
+  font-size: 0.8rem;
+  color: var(--lightGray);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  transition: color 0.3s;
+}
+
+.recent-comment-item:hover .recent-comment-text {
+  color: var(--almostWhite);
 }
 
 /* Responsive Design */
@@ -618,16 +728,14 @@ body {
     font-size: 0.7rem;
   }
 
-/* Responsive Design */
-@media (max-width: 768px) {
   .genres-bar {
     padding: 15px;
   }
 
   .genres-title {
-    font-size: 1rem; /* Mobilde 1.2rem'den 1rem'e küçültüldü */
-    margin-bottom: 8px; /* 10px'ten 8px'e küçültüldü */
-    gap: 4px; /* 6px'ten 4px'e küçültüldü */
+    font-size: 1rem;
+    margin-bottom: 8px;
+    gap: 4px;
   }
 
   .genres-list {
@@ -635,164 +743,13 @@ body {
   }
 
   .genre-item {
-    margin: 6px 0; /* 8px'ten 6px'e küçültüldü */
+    margin: 6px 0;
   }
 
   .genre-link {
-    font-size: 0.75rem; /* 0.9rem'den 0.75rem'e küçültüldü (önceki 0.5rem çok küçüktü) */
-  }
-}
-  
-  .genre-link:hover {
-    text-decoration: underline;
-    color: var(--hoverOrange);
-  }
-  /* Recent Comments */
-.recent-comments {
-  background-color: var(--veryDarkGrayishBlue);
-  padding: 15px; /* 20px'ten 15px'e küçültüldü */
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-.recent-comments-title {
-  font-size: 1.2rem; /* 1.5rem'den 1.2rem'e küçültüldü, TrendsTitles ile uyumlu */
-  color: var(--almostWhite);
-  margin-bottom: 10px; /* 15px'ten 10px'e küçültüldü */
-  border-left: 4px solid var(--hoverOrange);
-  padding-left: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.recent-comments-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.recent-comment-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px; /* 15px'ten 10px'e küçültüldü */
-  padding: 10px 0; /* 15px'ten 10px'e küçültüldü */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: background-color 0.3s;
-}
-
-.recent-comment-item:last-child {
-  border-bottom: none;
-}
-
-.recent-comment-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.recent-comment-poster-wrapper {
-  flex-shrink: 0;
-}
-
-.recent-comment-poster {
-  width: 40px; /* 60px'ten 40px'e küçültüldü, TrendsTitles ile uyumlu */
-  height: 60px; /* 90px'tan 60px'e küçültüldü */
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.recent-comment-details {
-  flex-grow: 1;
-  background-color: var(--darkGray);
-  padding: 8px; /* 10px'ten 8px'e küçültüldü */
-  border-radius: 4px;
-}
-
-.recent-comment-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px; /* 5px'ten 4px'e küçültüldü */
-}
-
-.recent-comment-username {
-  font-size: 0.9rem; /* 1rem'den 0.9rem'e küçültüldü */
-  font-weight: 500;
-  color: var(--hoverOrange);
-}
-
-.recent-comment-date {
-  font-size: 0.75rem; /* 0.85rem'den 0.75rem'e küçültüldü */
-  color: var(--mediumGray);
-}
-
-.recent-comment-movie-title {
-  font-size: 0.95rem; 
-  color: var(--almostWhite);
-  margin: 0 0 6px 0; 
-  font-weight: 600;
-  white-space: nowrap; /* Uzun başlıklar için taşma önleme */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.recent-comment-text {
-  font-size: 0.8rem;
-  color: var(--almostWhite);
-  margin: 0;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Webkit tarayıcıları için */
-  line-clamp: 2; /* Standart özellik, modern tarayıcılar için */
-  -webkit-box-orient: vertical;
-  box-orient: vertical; /* Standart için, ancak şu an tam desteklenmeyebilir */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .recent-comments {
-    padding: 10px; /* 15px'ten 10px'e küçültüldü */
+    font-size: 0.75rem;
   }
 
-  .recent-comments-title {
-    font-size: 1rem; /* 1.2rem'den 1rem'e küçültüldü */
-  }
-
-  .recent-comment-item {
-    gap: 8px; /* 10px'ten 8px'e küçültüldü */
-    padding: 8px 0; /* 10px'ten 8px'e küçültüldü */
-  }
-
-  .recent-comment-poster {
-    width: 35px; /* 50px'ten 35px'e küçültüldü */
-    height: 50px; /* 75px'ten 50px'e küçültüldü */
-  }
-  .recent-comment-poster-wrapper {
-    position: relative;
-    width: 40px;
-    height: 60px;
-  }
-
-  .recent-comment-details {
-    padding: 6px; /* 8px'ten 6px'e küçültüldü */
-  }
-
-  .recent-comment-username {
-    font-size: 0.85rem; /* 0.9rem'den 0.85rem'e küçültüldü */
-  }
-
-  .recent-comment-date {
-    font-size: 0.7rem; /* 0.75rem'den 0.7rem'e küçültüldü */
-  }
-
-  .recent-comment-movie-title {
-    font-size: 0.9rem; /* 1rem'den 0.9rem'e küçültüldü */
-  }
-
-  .recent-comment-text {
-    font-size: 0.75rem; /* 0.85rem'den 0.75rem'e küçültüldü */
-  }
-}
   .sidebar {
     width: 100%;
   }
@@ -809,6 +766,36 @@ body {
   .secondary-navbar__button {
     width: 100%;
     justify-content: center;
+  }
+
+  .recent-comments {
+    margin-top: 15px;
+    padding: 8px;
+    max-height: 350px;
+  }
+
+  .recent-comments-title {
+    font-size: 1rem;
+  }
+
+  .recent-comment-poster-wrapper {
+    height: 60px;
+  }
+
+  .recent-comment-username {
+    font-size: 0.85rem;
+  }
+
+  .recent-comment-date {
+    font-size: 0.65rem;
+  }
+
+  .recent-comment-movie-title {
+    font-size: 0.85rem;
+  }
+
+  .recent-comment-text {
+    font-size: 0.75rem;
   }
 }
 
@@ -845,5 +832,27 @@ body {
 
   .navbar__actions {
     display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .recent-comment-item .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recent-comment-item .col-3,
+  .recent-comment-item .col-9 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .recent-comment-poster-wrapper {
+    margin-bottom: 8px;
+  }
+
+  .recent-comment-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

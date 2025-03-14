@@ -1,15 +1,23 @@
-// src/components/ui/Navbar.tsx
+// src\components\ui\Navbar.tsx
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { FaLock, FaSearch, FaUserPlus } from 'react-icons/fa';
 import { colors } from '../../assets/styles/colors';
 
-const Navbar = () => {
+interface NavbarProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+const Navbar = ({ onSearch }: NavbarProps) => {
   useEffect(() => {
     Object.entries(colors).forEach(([key, value]) => {
       document.documentElement.style.setProperty(`--${key}`, value);
     });
   }, []);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
 
   return (
     <nav className="navbar">
@@ -28,6 +36,7 @@ const Navbar = () => {
               type="text"
               placeholder="Ara..."
               className="navbar__search-input form-control"
+              onChange={handleSearchChange}
             />
             <FaSearch className="search-icon" />
           </div>
