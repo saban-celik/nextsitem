@@ -1,0 +1,849 @@
+/*src\assets\styles\globals.css*/
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  background: var(--gradientDeepBlueToDarkPurple);
+  color: var(--almostWhite);
+}
+
+/* Layout */
+.page-wrapper {
+  margin-top: 60px;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: var(--darkGrayishBlue);
+  border-radius: 8px;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--darkGrayishBlue);
+  color: var(--lightGray);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.navbar__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navbar Menu Button (Hamburger) */
+.navbar__menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--lightGray);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Navbar Title (Logo) */
+.navbar__title {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__title img {
+  max-width: 100%;
+}
+
+/* Navbar Search */
+.navbar__search-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 300px;
+}
+
+.navbar__search-input {
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  width: 100%;
+  background-color: var(--darkGray);
+  color: var(--almostWhite);
+}
+
+.navbar__search-input::placeholder {
+  color: var(--mediumGray);
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mediumGray);
+  font-size: 1rem;
+}
+
+/* Navbar Actions */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar__action-btn {
+  background: var(--darkGray);
+  border: 1px solid var(--darkGray);
+  color: var(--lightGray);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.navbar__action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--mediumGray);
+}
+
+.navbar__action-icon {
+  font-size: 1rem;
+}
+
+.navbar__theme-button {
+  background: none;
+  border: none;
+  color: var(--lightGray);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--darkGrayishBlue);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.footer-links a {
+  color: var(--almostWhite);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Secondary Navbar */
+.secondary-navbar {
+  background: var(--darkGrayishBlue);
+  color: var(--lightGray);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--hoverOrange);
+}
+
+.secondary-navbar__container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.secondary-navbar__button {
+  background-color: var(--darkGrayishBlue);
+  color: var(--lightGray);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  transition: color 0.3s;
+}
+
+.secondary-navbar__button:hover {
+  color: var(--hoverOrange);
+}
+
+.secondary-navbar__icon {
+  font-size: 1rem;
+}
+
+/* Movie Slider */
+.movie-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Slider Buttons */
+.slider-btn {
+  background-color: var(--darkGrayishBlue);
+  color: var(--almostWhite);
+  border: 1px solid var(--mediumGrayBorder);
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 10;
+}
+
+.slider-btn:hover {
+  background-color: var(--hoverOrange);
+  color: var(--darkGrayishBlue);
+}
+
+.prev-btn {
+  margin-right: 10px;
+}
+
+.next-btn {
+  margin-left: 10px;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  flex-wrap: nowrap;
+  margin-top: 50px;
+}
+
+/* Movie Cards */
+.movie-card {
+  width: calc(20% - 16px);
+  background-color: var(--darkGrayishBlue);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow-y: auto;
+}
+
+/* Movie Thumbnail Wrapper */
+.movie-thumbnail-wrapper {
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+}
+
+/* Movie Thumbnail */
+.movie-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.movie-card:hover .movie-thumbnail {
+  opacity: 0.7;
+}
+
+/* Movie Title */
+.movie-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-weight: bold;
+  color: var(--almostWhite);
+  transition: color 0.3s;
+}
+
+.movie-card:hover .movie-title {
+  color: var(--hoverOrange);
+}
+
+/* Movie Description */
+.movie-description {
+  font-size: 0.9rem;
+  color: var(--mediumGray);
+}
+
+/* All Movies Section */
+.all-movies {
+  /* width: 75%; kaldırıldı, Bootstrap col-md-9 bunu halleder */
+  margin: 0;
+}
+
+/* All Movies Grid */
+.all-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 10px;
+}
+
+/* All Movie Cards */
+.all-movie-card {
+  background-color: var(--veryDarkGrayishBlue);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.all-movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* All Movie Thumbnail Wrapper */
+.all-movie-thumbnail-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+/* All Movie Thumbnail */
+.all-movie-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.all-movie-card:hover .all-movie-thumbnail {
+  opacity: 0.8;
+}
+
+/* All Movie Title */
+.all-movie-title {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  font-weight: 600;
+  color: var(--almostWhite);
+  text-align: center;
+}
+
+/* All Movie Description */
+.all-movie-description {
+  font-size: 0.85rem;
+  color: var(--mediumGray);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: var(--darkGray);
+  color: var(--lightGray);
+  border: 1px solid var(--mediumGrayBorder);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-btn:hover {
+  background-color: var(--hoverOrange);
+  color: var(--darkGrayishBlue);
+}
+
+.pagination-btn.active {
+  background-color: var(--hoverOrange);
+  color: var(--darkGrayishBlue);
+  font-weight: bold;
+}
+
+/* Movie Manager Wrapper */
+.movie-manager {
+  width: 100%;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  /* display: flex; kaldırıldı, Bootstrap row bunu halleder */
+  margin-top: 20px;
+}
+
+/* Trends */
+.trendbar {
+  /* width: 25%; kaldırıldı, Bootstrap col-md-3 bunu halleder */
+  background-color: var(--veryDarkGrayishBlue);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px; /* MovieGenres ile arasına boşluk */
+}
+
+/* Trends Title */
+.trendbar-title {
+  font-size: 1.1rem;
+  color: var(--almostWhite);
+  margin-bottom: 10px;
+  text-align: left;
+  border-left: 4px solid var(--hoverOrange);
+  padding-left: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Trend Movies List */
+.trend-movies-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Trend Movie Item */
+.trend-movie-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+  flex-wrap: nowrap;
+}
+
+.trend-movie-item:last-child {
+  border-bottom: none;
+}
+
+.trend-movie-item:hover {
+  background-color: var(--hoverOrange);
+}
+
+/* Trend Poster */
+.trend-poster {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Trend Content */
+.trend-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+/* Trend Rank */
+.trend-rank {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--almostWhite);
+  min-width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Trend Info */
+.trend-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Trend Title */
+.trend-title {
+  font-size: 0.85rem;
+  color: var(--almostWhite);
+  margin: 0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Trend Stats */
+.trend-stats {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+/* Trend Stat */
+.trend-stat {
+  font-size: 0.65rem;
+  color: var(--mediumGray);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+/* Trend Stat Icon */
+.trend-stat svg {
+  font-size: 0.8rem;
+  color: var(--hoverOrange);
+}
+
+/* Genres Bar */
+.genres-bar {
+  background-color: var(--darkGray);
+  padding: 15px; /* 20px'ten 15px'e küçültüldü */
+  border-radius: 8px;
+}
+
+.genres-title {
+  font-size: 1.2rem; /* 1.5rem'den 1.2rem'e küçültüldü, butonlarla daha dengeli */
+  margin-bottom: 12px; /* 15px'ten 12px'e küçültüldü */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--almostWhite);
+  border-bottom: 2px solid var(--hoverOrange);
+
+}
+
+.genres-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.genre-item {
+  margin: 8px 0; /* 10px'ten 8px'e küçültüldü */
+}
+
+.genre-link {
+  text-decoration: none;
+  color: var(--almostWhite);
+  font-size: 0.9rem; /* 1.1rem'den 0.9rem'e küçültüldü */
+  display: block;
+}
+
+.genre-link:hover {
+  text-decoration: underline;
+  color: var(--hoverOrange);
+}
+
+
+.genre-link:hover {
+  text-decoration: underline;
+  color: var(--hoverOrange);
+}
+
+/* Sidebar (TrendsTitles ve MovieGenres için kapsayıcı) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .movie-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-card {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+  }
+
+  .movie-thumbnail-wrapper {
+    height: 250px;
+  }
+
+  .trendbar {
+    margin-top: 20px;
+  }
+
+  .trend-movie-item {
+    gap: 6px;
+  }
+
+  .trend-poster {
+    width: 35px;
+    height: 50px;
+  }
+
+  .trend-rank {
+    font-size: 1rem;
+  }
+
+  .trend-title {
+    font-size: 0.8rem;
+  }
+
+  .trend-stats {
+    gap: 6px;
+  }
+
+  .trend-stat {
+    font-size: 0.6rem;
+  }
+
+  .trend-stat svg {
+    font-size: 0.7rem;
+  }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .genres-bar {
+    padding: 15px;
+  }
+
+  .genres-title {
+    font-size: 1rem; /* Mobilde 1.2rem'den 1rem'e küçültüldü */
+    margin-bottom: 8px; /* 10px'ten 8px'e küçültüldü */
+    gap: 4px; /* 6px'ten 4px'e küçültüldü */
+  }
+
+  .genres-list {
+    margin: 0;
+  }
+
+  .genre-item {
+    margin: 6px 0; /* 8px'ten 6px'e küçültüldü */
+  }
+
+  .genre-link {
+    font-size: 0.75rem; /* 0.9rem'den 0.75rem'e küçültüldü (önceki 0.5rem çok küçüktü) */
+  }
+}
+  
+  .genre-link:hover {
+    text-decoration: underline;
+    color: var(--hoverOrange);
+  }
+  /* Recent Comments */
+.recent-comments {
+  background-color: var(--veryDarkGrayishBlue);
+  padding: 15px; /* 20px'ten 15px'e küçültüldü */
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.recent-comments-title {
+  font-size: 1.2rem; /* 1.5rem'den 1.2rem'e küçültüldü, TrendsTitles ile uyumlu */
+  color: var(--almostWhite);
+  margin-bottom: 10px; /* 15px'ten 10px'e küçültüldü */
+  border-left: 4px solid var(--hoverOrange);
+  padding-left: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.recent-comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px; /* 15px'ten 10px'e küçültüldü */
+  padding: 10px 0; /* 15px'ten 10px'e küçültüldü */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+}
+
+.recent-comment-item:last-child {
+  border-bottom: none;
+}
+
+.recent-comment-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.recent-comment-poster-wrapper {
+  flex-shrink: 0;
+}
+
+.recent-comment-poster {
+  width: 40px; /* 60px'ten 40px'e küçültüldü, TrendsTitles ile uyumlu */
+  height: 60px; /* 90px'tan 60px'e küçültüldü */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.recent-comment-details {
+  flex-grow: 1;
+  background-color: var(--darkGray);
+  padding: 8px; /* 10px'ten 8px'e küçültüldü */
+  border-radius: 4px;
+}
+
+.recent-comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px; /* 5px'ten 4px'e küçültüldü */
+}
+
+.recent-comment-username {
+  font-size: 0.9rem; /* 1rem'den 0.9rem'e küçültüldü */
+  font-weight: 500;
+  color: var(--hoverOrange);
+}
+
+.recent-comment-date {
+  font-size: 0.75rem; /* 0.85rem'den 0.75rem'e küçültüldü */
+  color: var(--mediumGray);
+}
+
+.recent-comment-movie-title {
+  font-size: 0.95rem; 
+  color: var(--almostWhite);
+  margin: 0 0 6px 0; 
+  font-weight: 600;
+  white-space: nowrap; /* Uzun başlıklar için taşma önleme */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-comment-text {
+  font-size: 0.8rem;
+  color: var(--almostWhite);
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Webkit tarayıcıları için */
+  line-clamp: 2; /* Standart özellik, modern tarayıcılar için */
+  -webkit-box-orient: vertical;
+  box-orient: vertical; /* Standart için, ancak şu an tam desteklenmeyebilir */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .recent-comments {
+    padding: 10px; /* 15px'ten 10px'e küçültüldü */
+  }
+
+  .recent-comments-title {
+    font-size: 1rem; /* 1.2rem'den 1rem'e küçültüldü */
+  }
+
+  .recent-comment-item {
+    gap: 8px; /* 10px'ten 8px'e küçültüldü */
+    padding: 8px 0; /* 10px'ten 8px'e küçültüldü */
+  }
+
+  .recent-comment-poster {
+    width: 35px; /* 50px'ten 35px'e küçültüldü */
+    height: 50px; /* 75px'ten 50px'e küçültüldü */
+  }
+  .recent-comment-poster-wrapper {
+    position: relative;
+    width: 40px;
+    height: 60px;
+  }
+
+  .recent-comment-details {
+    padding: 6px; /* 8px'ten 6px'e küçültüldü */
+  }
+
+  .recent-comment-username {
+    font-size: 0.85rem; /* 0.9rem'den 0.85rem'e küçültüldü */
+  }
+
+  .recent-comment-date {
+    font-size: 0.7rem; /* 0.75rem'den 0.7rem'e küçültüldü */
+  }
+
+  .recent-comment-movie-title {
+    font-size: 0.9rem; /* 1rem'den 0.9rem'e küçültüldü */
+  }
+
+  .recent-comment-text {
+    font-size: 0.75rem; /* 0.85rem'den 0.75rem'e küçültüldü */
+  }
+}
+  .sidebar {
+    width: 100%;
+  }
+
+  .page-wrapper {
+    padding-top: 60px;
+  }
+
+  .secondary-navbar__container {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .secondary-navbar__button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar__menu-btn {
+    display: block;
+  }
+
+  .navbar__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar__search-wrapper {
+    flex-grow: 0;
+    width: auto;
+  }
+
+  .search-wrapper {
+    width: auto;
+  }
+
+  .navbar__search-input {
+    display: none;
+  }
+
+  .search-icon {
+    position: static;
+    transform: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .navbar__actions {
+    display: none;
+  }
+}
