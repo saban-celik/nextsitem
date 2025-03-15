@@ -18,27 +18,23 @@ const RecentComments = ({ searchTerm }: RecentCommentsProps) => {
         {filteredComments.length > 0 ? (
           filteredComments.map((comment, index) => (
             <li key={index} className="recent-comment-item">
-              <div className="row align-items-start">
-                <div className="col-3 col-md-3 p-0">
-                  <div className="recent-comment-poster-wrapper">
-                    <Image
-                      src={comment.poster}
-                      alt={`${comment.movieTitle} poster`}
-                      width={60}
-                      height={90}
-                      className="recent-comment-poster"
-                    />
-                  </div>
+              <div className="recent-comment-container">
+                <div className="recent-comment-poster-wrapper">
+                  <Image
+                    src={comment.poster}
+                    alt={`${comment.movieTitle} poster`}
+                    width={60}
+                    height={90}
+                    className="recent-comment-poster"
+                  />
                 </div>
-                <div className="col-9 col-md-9">
-                  <div className="recent-comment-details">
-                    <div className="recent-comment-header">
-                      <div className="recent-comment-username">{comment.username}</div>
-                      <div className="recent-comment-date">{comment.date}</div>
-                    </div>
-                    <div className="recent-comment-movie-title">{comment.movieTitle}</div>
-                    <div className="recent-comment-text">{comment.text}</div>
+                <div className="recent-comment-details">
+                  <div className="recent-comment-header">
+                    <div className="recent-comment-username">{comment.username}</div>
+                    <div className="recent-comment-date">{comment.date}</div>
                   </div>
+                  <div className="recent-comment-movie-title">{comment.movieTitle}</div>
+                  <div className="recent-comment-text">{comment.text}</div>
                 </div>
               </div>
             </li>
