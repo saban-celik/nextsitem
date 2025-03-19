@@ -1,18 +1,20 @@
-// src\components\ui\AllMovies.tsx
+// src/components/ui/AllMovies.tsx
 import Image from 'next/image';
 import { useState } from 'react';
 import { allMovies } from '../../data/data';
 
 interface AllMoviesProps {
   searchTerm: string;
+  category: string; // Yeni prop
 }
 
-const AllMovies = ({ searchTerm }: AllMoviesProps) => {
+const AllMovies = ({ searchTerm, category }: AllMoviesProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 12;
 
   const filteredMovies = allMovies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (category === 'all' || movie.type === category)
   );
 
   const totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
@@ -41,7 +43,7 @@ const AllMovies = ({ searchTerm }: AllMoviesProps) => {
               </div>
               <div className="all-movie-info">
                 <h3 className="all-movie-title">{movie.title}</h3>
-                <p className="all-movie-description">{movie.description}</p>
+                <p className="all-movie-description">{movie.description} - {movie.type}</p>
               </div>
             </div>
           ))

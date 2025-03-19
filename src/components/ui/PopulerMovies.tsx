@@ -1,16 +1,18 @@
-//src\components\ui\PopulerMovies.tsx
+// src/components/ui/PopulerMovies.tsx
 import { useEffect, useState } from 'react';
 import { popularMovies } from '../../data/data';
 
 interface PopulerMoviesProps {
   searchTerm: string;
+  category: string; // Yeni prop
 }
 
-const PopulerMovies = ({ searchTerm }: PopulerMoviesProps) => {
+const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const filteredMovies = popularMovies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (category === 'all' || movie.type === category)
   );
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const PopulerMovies = ({ searchTerm }: PopulerMoviesProps) => {
                 </div>
                 <div className="movie-info">
                   <h2 className="movie-title">{movie.title}</h2>
-                  <p className="movie-description">{movie.description}</p>
+                  <p className="movie-description">{movie.description} - {movie.type}</p>
                 </div>
               </div>
             ))
