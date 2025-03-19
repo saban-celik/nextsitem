@@ -229,7 +229,7 @@ export const allMovies: Movie[] = [
 // Popüler filmleri allMovies içinden seçiyoruz (örneğin, son 5 yıl içindeki filmler)
 export const popularMovies: Movie[] = allMovies
   .filter((movie) => parseInt(movie.description) >= 2020) // 2020 ve sonrası filmler
-  .slice(0, 5); // İlk 5 tanesini al
+  .slice(0, 10); // İlk 5 tanesini al
 
 export const trendMovies: TrendMovie[] = [
   {
