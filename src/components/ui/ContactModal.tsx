@@ -1,6 +1,5 @@
 // src/components/ui/ContactModal.tsx
-import Image from 'next/image';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 interface ContactModalProps {
@@ -9,77 +8,92 @@ interface ContactModalProps {
 }
 
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
+  // Login durumunu ve kullanıcı adını kontrol et
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loggedIn);
+    if (loggedIn) {
+      const storedUsername = localStorage.getItem('username') || 'Kullanıcı';
+      setUsername(storedUsername);
+      setName(storedUsername); // Formun name alanını kullanıcı adıyla doldur
+    } else {
+      setName(''); // Giriş yapılmamışsa boş bırak
+    }
+  }, []);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log('İletişim Formu Gönderildi:', { name: isLoggedIn ? username : name, email, message });
+    setEmail('');
+    setMessage('');
+    if (!isLoggedIn) setName(''); // Giriş yapılmamışsa name sıfırlanır
+    onClose();
+  };
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Burada bir API çağrısı yapılabilir, şimdilik sadece simüle ediyoruz
-    setSubmitted(true);
-    setMessage('');
-  };
-
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-btn" onClick={onClose}>
           <FaTimes />
         </button>
         <div className="modal-header">
-          <Image
-            src="/images/4kfilmizlesene.png"
-            alt="4K Film İzlesene Logo"
-            width={150}
-            height={50}
-          />
-          <h2 className="auth-title">İletişim</h2>
+          <h2>İletişim</h2>
         </div>
-        {submitted ? (
-          <div className="auth-error" style={{ backgroundColor: 'var(--darkGray)', border: '1px solid var(--hoverOrange)' }}>
-            Mesajınız başarıyla gönderildi! En kısa sürede size geri döneceğiz.
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="auth-form-group">
+            {isLoggedIn ? (
+              <>
+                <label className="auth-label">İsim</label>
+                <div className="auth-username-display">{username}</div>
+              </>
+            ) : (
+              <>
+                <label className="auth-label">İsim</label>
+                <input
+                  type="text"
+                  className="auth-input"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Adınızı girin"
+                  required
+                />
+              </>
+            )}
           </div>
-        ) : (
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="auth-form-group">
-              <label htmlFor="name" className="auth-label">Adınız</label>
-              <input
-                type="text"
-                className="auth-input"
-                id="name"
-                name="name"
-                placeholder="Adınızı girin"
-                required
-              />
-            </div>
-            <div className="auth-form-group">
-              <label htmlFor="email" className="auth-label">E-posta</label>
-              <input
-                type="email"
-                className="auth-input"
-                id="email"
-                name="email"
-                placeholder="E-posta adresinizi girin"
-                required
-              />
-            </div>
-            <div className="auth-form-group">
-              <label htmlFor="message" className="auth-label">Mesajınız</label>
-              <textarea
-                className="auth-input"
-                id="message"
-                name="message"
-                placeholder="Mesajınızı buraya yazın"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                required
-              />
-            </div>
-            <button type="submit" className="auth-button">Gönder</button>
-          </form>
-        )}
+          <div className="auth-form-group">
+            <label className="auth-label">E-posta</label>
+            <input
+              type="email"
+              className="auth-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-posta adresinizi girin"
+              required
+            />
+          </div>
+          <div className="auth-form-group">
+            <label className="auth-label">Mesaj</label>
+            <textarea
+              className="auth-input"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Mesajınızı buraya yazın"
+              rows={4}
+              required
+            />
+          </div>
+          <button type="submit" className="auth-button">
+            Gönder
+          </button>
+        </form>
       </div>
     </div>
   );
