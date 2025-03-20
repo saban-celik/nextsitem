@@ -1,20 +1,23 @@
 // src/components/ui/AllMovies.tsx
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { allMovies } from '../../data/data';
 
 interface AllMoviesProps {
   searchTerm: string;
-  category: string; // Yeni prop
+  category: string;
 }
 
 const AllMovies = ({ searchTerm, category }: AllMoviesProps) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
   const moviesPerPage = 12;
 
-  const filteredMovies = allMovies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (category === 'all' || movie.type === category)
+  const filteredMovies = allMovies.filter(
+    (movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (category === 'all' || movie.type === category)
   );
 
   const totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
@@ -25,17 +28,36 @@ const AllMovies = ({ searchTerm, category }: AllMoviesProps) => {
     setCurrentPage(page);
   };
 
+  const handleMovieClick = (movie: typeof allMovies[0]) => {
+    console.log('Tıklanan film:', movie);
+    router.push({
+      pathname: `/movie/${encodeURIComponent(movie.title)}`, // Başlığı encode et
+      query: {
+        title: movie.title,
+        src: movie.src,
+        description: movie.description,
+        type: movie.type,
+        videoUrl: movie.videoUrl,
+      },
+    });
+  };
+
   return (
     <div className="all-movies">
       <div className="all-movies-grid">
         {visibleMovies.length > 0 ? (
           visibleMovies.map((movie, index) => (
-            <div className="all-movie-card" key={index + startIndex}>
+            <div
+              className="all-movie-card"
+              key={index + startIndex}
+              onClick={() => handleMovieClick(movie)}
+              style={{ cursor: 'pointer' }}
+            >
               <div className="all-movie-thumbnail-wrapper">
                 <Image
                   className="all-movie-thumbnail"
                   src={movie.src}
-                  alt={`${movie.title} poster`}
+                  alt={`${movie.title} posteri`}
                   width={210}
                   height={315}
                   loading="lazy"

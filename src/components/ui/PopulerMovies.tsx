@@ -1,18 +1,21 @@
 // src/components/ui/PopulerMovies.tsx
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { popularMovies } from '../../data/data';
 
 interface PopulerMoviesProps {
   searchTerm: string;
-  category: string; // Yeni prop
+  category: string;
 }
 
 const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
   const [startIndex, setStartIndex] = useState(0);
+  const router = useRouter();
 
-  const filteredMovies = popularMovies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (category === 'all' || movie.type === category)
+  const filteredMovies = popularMovies.filter(
+    (movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (category === 'all' || movie.type === category)
   );
 
   useEffect(() => {
@@ -45,23 +48,42 @@ const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
     });
   };
 
+  const handleMovieClick = (movie: typeof popularMovies[0]) => {
+    console.log('Tıklanan popüler film:', movie);
+    router.push({
+      pathname: `/movie/${encodeURIComponent(movie.title)}`, // Başlığı encode et
+      query: {
+        title: movie.title,
+        src: movie.src,
+        description: movie.description,
+        type: movie.type,
+        videoUrl: movie.videoUrl,
+      },
+    });
+  };
+
   const visibleMovies = filteredMovies.slice(startIndex, startIndex + 5);
 
   return (
     <div className="movie-content">
       <div className="movie-slider">
         <button className="slider-btn prev-btn" onClick={handlePrev}>
-          &lt;
+          {'<'}
         </button>
         <div className="movie-grid">
           {visibleMovies.length > 0 ? (
             visibleMovies.map((movie, index) => (
-              <div className="movie-card" key={index + startIndex}>
+              <div
+                className="movie-card"
+                key={index + startIndex}
+                onClick={() => handleMovieClick(movie)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="movie-thumbnail-wrapper">
                   <img
                     className="movie-thumbnail"
                     src={movie.src}
-                    alt={`${movie.title} poster`}
+                    alt={`${movie.title} posteri`}
                   />
                 </div>
                 <div className="movie-info">
@@ -75,7 +97,7 @@ const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
           )}
         </div>
         <button className="slider-btn next-btn" onClick={handleNext}>
-          &gt;
+          {'>'}
         </button>
       </div>
     </div>
