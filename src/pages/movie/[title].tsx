@@ -70,8 +70,7 @@ const MoviePage = () => {
             onToggleSignup={toggleSignup}
             onToggleLogin={toggleLogin}
           />
-          {/* SecondaryNavbar kaldırıldı */}
-          <MovieDetails movie={movie} />
+          <MovieDetails movie={movie} onToggleLogin={toggleLogin} />
           <Footer />
         </div>
       </div>
