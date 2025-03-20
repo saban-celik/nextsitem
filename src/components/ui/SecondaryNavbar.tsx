@@ -3,7 +3,7 @@ import { FaEnvelope } from 'react-icons/fa';
 
 interface SecondaryNavbarProps {
   onCategorySelect: (category: string) => void;
-  onToggleContact: () => void; // Yeni prop
+  onToggleContact: () => void;
 }
 
 const SecondaryNavbar = ({ onCategorySelect, onToggleContact }: SecondaryNavbarProps) => {

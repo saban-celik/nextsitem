@@ -3,7 +3,7 @@ import { useState } from 'react';
 import AdManager from '../components/ads/AdManager';
 import MainLayout from '../components/layouts/MainLayout';
 import MovieManager from '../components/managers/MovieManager';
-import ContactModal from '../components/ui/ContactModal'; // Yeni eklenen modal
+import ContactModal from '../components/ui/ContactModal';
 import Footer from '../components/ui/Footer';
 import LoginModal from '../components/ui/LoginModal';
 import Navbar from '../components/ui/Navbar';
@@ -14,7 +14,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false); // Yeni state
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const handleSearch = (term: string) => {
@@ -24,19 +24,19 @@ const Home = () => {
   const toggleSignup = () => {
     setIsSignupOpen(!isSignupOpen);
     setIsLoginOpen(false);
-    setIsContactOpen(false); // Diğer modalları kapat
+    setIsContactOpen(false);
   };
 
   const toggleLogin = () => {
     setIsLoginOpen(!isLoginOpen);
     setIsSignupOpen(false);
-    setIsContactOpen(false); // Diğer modalları kapat
+    setIsContactOpen(false);
   };
 
   const toggleContact = () => {
     setIsContactOpen(!isContactOpen);
     setIsSignupOpen(false);
-    setIsLoginOpen(false); // Diğer modalları kapat
+    setIsLoginOpen(false);
   };
 
   const handleCategorySelect = (category: string) => {
@@ -54,7 +54,7 @@ const Home = () => {
           />
           <SecondaryNavbar 
             onCategorySelect={handleCategorySelect} 
-            onToggleContact={toggleContact} // Yeni prop
+            onToggleContact={toggleContact} 
           />
           <MovieManager searchTerm={searchTerm} selectedCategory={selectedCategory} />
           <AdManager />
@@ -63,7 +63,7 @@ const Home = () => {
       </div>
       <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} /> {/* Yeni modal */}
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </MainLayout>
   );
 };

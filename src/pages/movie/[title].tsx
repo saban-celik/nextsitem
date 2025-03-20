@@ -1,14 +1,13 @@
 // src/pages/movie/[title].tsx
 import { useRouter } from 'next/router';
-import MovieDetails from '../../components/ui/MovieDetails';
+import { useEffect, useState } from 'react';
 import MainLayout from '../../components/layouts/MainLayout';
-import Navbar from '../../components/ui/Navbar';
-import SecondaryNavbar from '../../components/ui/SecondaryNavbar';
-import Footer from '../../components/ui/Footer';
-import { useState, useEffect } from 'react';
 import ContactModal from '../../components/ui/ContactModal';
-import SignupModal from '../../components/ui/SignupModal';
+import Footer from '../../components/ui/Footer';
 import LoginModal from '../../components/ui/LoginModal';
+import MovieDetails from '../../components/ui/MovieDetails';
+import Navbar from '../../components/ui/Navbar';
+import SignupModal from '../../components/ui/SignupModal';
 
 const MoviePage = () => {
   const router = useRouter();
@@ -18,7 +17,6 @@ const MoviePage = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     console.log('Router Query:', router.query);
@@ -28,7 +26,6 @@ const MoviePage = () => {
     return <p>Yükleniyor...</p>;
   }
 
-  // Temel parametreler eksikse hata göster, ama videoUrl opsiyonel
   if (!title || !src || !description || !type) {
     console.error('Eksik temel query parametreleri:', { title, src, description, type, videoUrl });
     return <p>Eksik veri, lütfen tekrar deneyin.</p>;
@@ -39,7 +36,7 @@ const MoviePage = () => {
     src: src as string,
     description: description as string,
     type: type as string,
-    videoUrl: videoUrl ? (videoUrl as string) : 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Varsayılan URL
+    videoUrl: videoUrl ? (videoUrl as string) : 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   };
 
   const handleSearch = (term: string) => {
@@ -64,10 +61,6 @@ const MoviePage = () => {
     setIsLoginOpen(false);
   };
 
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
-  };
-
   return (
     <MainLayout>
       <div className="page-wrapper">
@@ -77,10 +70,7 @@ const MoviePage = () => {
             onToggleSignup={toggleSignup}
             onToggleLogin={toggleLogin}
           />
-          <SecondaryNavbar
-            onCategorySelect={handleCategorySelect}
-            onToggleContact={toggleContact}
-          />
+          {/* SecondaryNavbar kaldırıldı */}
           <MovieDetails movie={movie} />
           <Footer />
         </div>
