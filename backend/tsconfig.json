@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                  /* ES2016 yerine ES6 yazdım, aynı anlama geliyor ve daha yaygın */
+    "module": "commonjs",             /* Node.js için uygun */
+    "strict": true,                   /* Katı tip kontrolü */
+    "esModuleInterop": true,          /* Modül uyumluluğu */
+    "forceConsistentCasingInFileNames": true, /* Dosya isimlerinde tutarlılık */
+    "skipLibCheck": true,             /* Kütüphane dosyalarını kontrol etme */
+    "outDir": "./dist",               /* Derlenmiş JS dosyalarının çıkacağı klasör */
+    "rootDir": "./",                  /* Kaynak dosyaların kök dizini */
+    "sourceMap": true                 /* Hata ayıklama için source map oluştur */
+  },
+  "include": ["*.ts"],                /* Hangi dosyaların derleneceği */
+  "exclude": ["node_modules", "dist"] /* Hangi dosyaların dışarıda bırakılacağı */
+}
