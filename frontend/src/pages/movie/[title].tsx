@@ -16,7 +16,6 @@ const MoviePage = () => {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     console.log('Router Query:', router.query);
@@ -39,10 +38,6 @@ const MoviePage = () => {
     videoUrl: videoUrl ? (videoUrl as string) : 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   };
 
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
-  };
-
   const toggleSignup = () => {
     setIsSignupOpen(!isSignupOpen);
     setIsLoginOpen(false);
@@ -55,10 +50,9 @@ const MoviePage = () => {
     setIsContactOpen(false);
   };
 
-  const toggleContact = () => {
-    setIsContactOpen(!isContactOpen);
-    setIsSignupOpen(false);
-    setIsLoginOpen(false);
+  const handleSearch = (searchTerm: string) => {
+    console.log('Arama terimi:', searchTerm);
+    // Arama mantığını buraya ekleyebilirsin, örneğin router.push ile bir arama sayfasına yönlendirme
   };
 
   return (

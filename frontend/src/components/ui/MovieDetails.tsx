@@ -1,7 +1,8 @@
 // src/components/ui/MovieDetails.tsx
+import Image from 'next/image'; // Image bileşenini ekledik
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
-import { FaArrowLeft, FaUser } from 'react-icons/fa'; // FaUser eklendi
+import { FaArrowLeft, FaUser } from 'react-icons/fa';
 import { allMovies } from '../../data/data';
 
 interface MovieDetailsProps {
@@ -123,10 +124,12 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
               style={{ cursor: 'pointer' }}
             >
               <div className="movie-thumbnail-wrapper">
-                <img
+                <Image
                   className="movie-thumbnail"
                   src={suggestedMovie.src}
                   alt={`${suggestedMovie.title} posteri`}
+                  width={200} // Örnek genişlik
+                  height={300} // Örnek yükseklik
                 />
               </div>
               <div className="movie-info">

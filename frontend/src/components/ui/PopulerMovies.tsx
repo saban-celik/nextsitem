@@ -1,4 +1,5 @@
 // src/components/ui/PopulerMovies.tsx
+import Image from 'next/image'; // next/image eklendi
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { popularMovies } from '../../data/data';
@@ -51,7 +52,7 @@ const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
   const handleMovieClick = (movie: typeof popularMovies[0]) => {
     console.log('Tıklanan popüler film:', movie);
     router.push({
-      pathname: `/movie/${encodeURIComponent(movie.title)}`, // Başlığı encode et
+      pathname: `/movie/${encodeURIComponent(movie.title)}`,
       query: {
         title: movie.title,
         src: movie.src,
@@ -80,10 +81,12 @@ const PopulerMovies = ({ searchTerm, category }: PopulerMoviesProps) => {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="movie-thumbnail-wrapper">
-                  <img
+                  <Image
                     className="movie-thumbnail"
                     src={movie.src}
                     alt={`${movie.title} posteri`}
+                    width={200} // Örnek genişlik
+                    height={300} // Örnek yükseklik
                   />
                 </div>
                 <div className="movie-info">

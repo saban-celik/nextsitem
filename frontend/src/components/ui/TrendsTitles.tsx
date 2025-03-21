@@ -1,4 +1,5 @@
-// src\components\ui\TrendsTitles.tsx
+// src/components/ui/TrendsTitles.tsx
+import Image from 'next/image'; // next/image eklendi
 import { FaComment, FaEye, FaStar } from 'react-icons/fa';
 import { trendMovies } from '../../data/data';
 
@@ -19,7 +20,13 @@ const TrendsTitles = ({ searchTerm }: TrendsTitlesProps) => {
           filteredTrendMovies.map((movie) => (
             <li key={movie.rank} className="trend-movie-item">
               <span className="trend-rank">{movie.rank}</span>
-              <img src={movie.poster} alt={`${movie.title} poster`} className="trend-poster" />
+              <Image
+                src={movie.poster}
+                alt={`${movie.title} poster`}
+                className="trend-poster"
+                width={100} // Örnek genişlik
+                height={150} // Örnek yükseklik
+              />
               <div className="trend-content">
                 <div className="trend-info">
                   <h3 className="trend-title">{movie.title}</h3>
