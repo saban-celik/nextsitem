@@ -28,7 +28,7 @@ app.use((0, cors_1.default)()); // CORS desteği (Next.js frontend ile iletişim
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'sifren',
+    password: process.env.DB_PASSWORD || '123456',
     database: process.env.DB_NAME || 'veritabanin_adi',
 };
 // Veritabanı bağlantı fonksiyonu

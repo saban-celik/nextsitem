@@ -1,5 +1,5 @@
 // src/components/ui/MovieDetails.tsx
-import Image from 'next/image'; // Image bileşenini ekledik
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
 import { FaArrowLeft, FaUser } from 'react-icons/fa';
@@ -22,6 +22,8 @@ interface Comment {
   text: string;
   hasSpoiler: boolean;
   date: string;
+  approved?: boolean;
+  reply?: string;
 }
 
 const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
@@ -66,6 +68,7 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
         month: 'long',
         year: 'numeric',
       }),
+      approved: false, // Admin onayı bekliyor
     };
     setComments((prev) => [newComment, ...prev]);
     setEmail('');
@@ -101,7 +104,6 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
         </div>
       </div>
 
-      {/* İlginizi Çekebilecek Diğer Filmler */}
       <div className="suggested-movies">
         <h2 className="suggested-movies-title">İlginizi Çekebilecek Diğer Filmler</h2>
         <div className="movie-grid">
@@ -128,8 +130,8 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
                   className="movie-thumbnail"
                   src={suggestedMovie.src}
                   alt={`${suggestedMovie.title} posteri`}
-                  width={200} // Örnek genişlik
-                  height={300} // Örnek yükseklik
+                  width={200}
+                  height={300}
                 />
               </div>
               <div className="movie-info">
@@ -143,7 +145,6 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
         </div>
       </div>
 
-      {/* Yorum Yapma Bölümü */}
       <div className="comment-section">
         <h2 className="comment-section-title">Film Hakkındaki Düşüncelerinizi Paylaşın</h2>
         {isLoggedIn ? (
@@ -195,7 +196,6 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
           </p>
         )}
 
-        {/* Gönderilen Yorumlar */}
         {comments.length > 0 && (
           <div className="comments-list">
             <h3 className="comments-list-title">Yorumlar</h3>
@@ -209,6 +209,8 @@ const MovieDetails = ({ movie, onToggleLogin }: MovieDetailsProps) => {
                   <span className="comment-spoiler-warning">Spoiler içerir!</span>
                 )}
                 <p className="comment-text">{comment.text}</p>
+                {!comment.approved && <p className="comment-text">Onay bekliyor...</p>}
+                {comment.reply && <p className="comment-text">Admin Cevabı: {comment.reply}</p>}
               </div>
             ))}
           </div>

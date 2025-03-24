@@ -1,5 +1,4 @@
 //C:\nextjs\nextsitem\backend\index.ts
-
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
@@ -19,8 +18,9 @@ app.use(cors()); // CORS desteği (Next.js frontend ile iletişim için)
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'sifren',
-  database: process.env.DB_NAME || 'veritabanin_adi',
+  password: process.env.DB_PASSWORD || '123456',
+  database: process.env.DB_NAME || 'next_sitem', // myapp_db yerine next_sitem
+  port: parseInt(process.env.DB_PORT || '3306'),
 };
 
 // Veritabanı bağlantı fonksiyonu
