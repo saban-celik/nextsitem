@@ -3,7 +3,7 @@
   background: var(--gradientDeepBlueToDarkPurple);
   color: var(--almostWhite);
   min-height: 100vh;
-  --topbar-height: 60px; /* Topbar yüksekliği için CSS değişkeni */
+  --topbar-height: 60px; 
 }
 
 .admin-wrapper .admin-topbar {

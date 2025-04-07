@@ -1,8 +1,6 @@
-// src/pages/admin/index.tsx
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import '../../assets/styles/admin.css';
 import AdminLayout from '../../components/admin/AdminLayout';
 import Dashboard from '../../components/admin/Dashboard';
 
@@ -15,9 +13,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const auth = localStorage.getItem('adminAuthenticated');
-    if (auth === 'true') {
-      setIsAuthenticated(true);
-    }
+    if (auth === 'true') setIsAuthenticated(true);
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -35,7 +31,7 @@ const AdminPage = () => {
     return (
       <>
         <Head>
-          <title>Admin Giriş - 4KFilmizlesene</title>
+          <title>Admin Giriş</title>
         </Head>
         <div className="auth-container">
           <div className="auth-card">
@@ -77,7 +73,7 @@ const AdminPage = () => {
   return (
     <>
       <Head>
-        <title>Admin Paneli - 4KFilmizlesene</title>
+        <title>Admin Paneli</title>
       </Head>
       <AdminLayout>
         <Dashboard />

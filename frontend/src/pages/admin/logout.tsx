@@ -1,4 +1,3 @@
-// src/pages/admin/logout.tsx
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import AdminLayout from '../../components/admin/AdminLayout';

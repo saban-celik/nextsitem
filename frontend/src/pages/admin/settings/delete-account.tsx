@@ -1,3 +1,4 @@
+//src\pages\admin\settings\delete-account.tsx
 import Head from 'next/head';
 import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';

@@ -1,15 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES6",                  /* ES2016 yerine ES6 yazdım, aynı anlama geliyor ve daha yaygın */
-    "module": "commonjs",             /* Node.js için uygun */
-    "strict": true,                   /* Katı tip kontrolü */
-    "esModuleInterop": true,          /* Modül uyumluluğu */
-    "forceConsistentCasingInFileNames": true, /* Dosya isimlerinde tutarlılık */
-    "skipLibCheck": true,             /* Kütüphane dosyalarını kontrol etme */
-    "outDir": "./dist",               /* Derlenmiş JS dosyalarının çıkacağı klasör */
-    "rootDir": "./",                  /* Kaynak dosyaların kök dizini */
-    "sourceMap": true                 /* Hata ayıklama için source map oluştur */
+    "target": "ES6",                    // ES6'yı hedef alır
+    "module": "commonjs",               // CommonJS modül sistemi kullanılır
+    "strict": true,                     // Sıkı tip denetimi aktif
+    "esModuleInterop": true,            // ES modülleriyle uyumlu
+    "forceConsistentCasingInFileNames": true, // Dosya isimlerinde tutarlılık sağlanır
+    "skipLibCheck": true,               // Kütüphane dosyalarını kontrol etmez
+    "outDir": "./dist",                 // Derlenmiş dosyalar dist klasörüne çıkartılır
+    "rootDir": "./",                    // Kaynak dosyalar kök dizin
+    "sourceMap": true,                  // Kaynak haritaları oluşturulur
+    "allowJs": true,                    // JavaScript dosyalarını da derlemeye dahil eder
+    "checkJs": false                    // JavaScript dosyalarını tip kontrolünden geçirmez
   },
-  "include": ["*.ts"],                /* Hangi dosyaların derleneceği */
-  "exclude": ["node_modules", "dist"] /* Hangi dosyaların dışarıda bırakılacağı */
+  "include": [
+    "**/*.ts",                          // Tüm .ts dosyalarını dahil et
+    "index.js"                          // index.js dosyasını da dahil et
+  ],
+  "exclude": [
+    "node_modules",                     // node_modules klasörü dışlanır
+    "dist"                              // dist klasörü dışlanır
+  ]
 }

@@ -14,16 +14,15 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
 
-  // Login durumunu ve kullanıcı adını kontrol et
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loggedIn);
     if (loggedIn) {
       const storedUsername = localStorage.getItem('username') || 'Kullanıcı';
       setUsername(storedUsername);
-      setName(storedUsername); // Formun name alanını kullanıcı adıyla doldur
+      setName(storedUsername);
     } else {
-      setName(''); // Giriş yapılmamışsa boş bırak
+      setName('');
     }
   }, []);
 

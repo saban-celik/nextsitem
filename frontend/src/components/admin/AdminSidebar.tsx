@@ -1,7 +1,8 @@
 // src/components/admin/AdminSidebar.tsx
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { FaChartBar, FaChartLine, FaCog, FaComment, FaFilm, FaFolder, FaHome, FaSignOutAlt, FaUsers, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp, FaChartBar, FaChartLine, FaCog, FaComment, FaFilm, FaFolder, FaHome, FaSignOutAlt, FaUsers } from 'react-icons/fa';
 
 interface AdminSidebarProps {
   isOpen: boolean;
@@ -13,7 +14,7 @@ const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
 
   const sidebarItems = [
     { icon: <FaHome />, label: 'Dashboard', path: '/admin' },
-    { icon: <FaUsers />, label: 'Kullanıcılar', path: '/admin/users' },
+    { icon: <FaUsers />, label: 'Kullanıcılar', path: '/admin/users' }, // Dropdown yerine direkt link
     { icon: <FaFilm />, label: 'Filmler', path: '/admin/movies' },
     { icon: <FaFolder />, label: 'Film Kategorileri', path: '/admin/categories' },
     { icon: <FaComment />, label: 'Yorumlar', path: '/admin/comments' },
@@ -31,48 +32,44 @@ const AdminSidebar = ({ isOpen }: AdminSidebarProps) => {
   return (
     <div className={`admin-sidebar ${isOpen ? 'open' : ''}`}>
       <nav className="admin-sidebar__nav">
-        {sidebarItems.map((item, index) => (
-          <a
-            key={index}
-            href={item.path}
-            className={`admin-sidebar__link ${router.pathname === item.path ? 'active' : ''}`}
-          >
-            {item.icon}
-            <span>{item.label}</span>
-          </a>
+        {sidebarItems.map((item) => (
+          <Link key={item.path} href={item.path} passHref>
+            <div className={`admin-sidebar__link ${router.pathname === item.path ? 'active' : ''}`}>
+              {item.icon}
+              <span>{item.label}</span>
+            </div>
+          </Link>
         ))}
-        {/* Settings Dropdown */}
+
+        {/* Settings Menüsü */}
         <div>
-          <button
+          <div
             className={`admin-sidebar__link ${router.pathname.startsWith('/admin/settings') ? 'active' : ''}`}
             onClick={() => setIsSettingsOpen(!isSettingsOpen)}
           >
             <FaCog />
             <span>Ayarlar</span>
             {isSettingsOpen ? <FaAngleUp /> : <FaAngleDown />}
-          </button>
+          </div>
           {isSettingsOpen && (
             <div className="admin-sidebar__submenu">
-              {settingsSubItems.map((subItem, index) => (
-                <a
-                  key={index}
-                  href={subItem.path}
-                  className={`admin-sidebar__link ${router.pathname === subItem.path ? 'active' : ''}`}
-                >
-                  <span>{subItem.label}</span>
-                </a>
+              {settingsSubItems.map((subItem) => (
+                <Link key={subItem.path} href={subItem.path} passHref>
+                  <div className={`admin-sidebar__link ${router.pathname === subItem.path ? 'active' : ''}`}>
+                    <span>{subItem.label}</span>
+                  </div>
+                </Link>
               ))}
             </div>
           )}
         </div>
-        {/* Logout */}
-        <a
-          href="/admin/logout"
-          className={`admin-sidebar__link ${router.pathname === '/admin/logout' ? 'active' : ''}`}
-        >
-          <FaSignOutAlt />
-          <span>Çıkış Yap</span>
-        </a>
+
+        <Link href="/admin/logout" passHref>
+          <div className={`admin-sidebar__link ${router.pathname === '/admin/logout' ? 'active' : ''}`}>
+            <FaSignOutAlt />
+            <span>Çıkış Yap</span>
+          </div>
+        </Link>
       </nav>
     </div>
   );

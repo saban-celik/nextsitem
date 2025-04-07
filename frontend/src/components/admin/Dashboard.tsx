@@ -1,4 +1,4 @@
-//src\components\admin\Dashboard.tsx
+// src/components/admin/Dashboard.tsx
 const Dashboard = () => {
   const stats = [
     { title: 'Toplam Kullanıcı', value: '1,245' },
@@ -18,12 +18,6 @@ const Dashboard = () => {
     { label: 'Kullanıcı Düzenle', path: '/admin/users/edit' },
     { label: 'Yorumları Onayla', path: '/admin/comments/approve' },
     { label: 'Kategori Ekle', path: '/admin/categories/new' },
-  ];
-
-  const registeredUsers = [
-    { id: '1', username: 'filmsever', email: 'filmsever@example.com', joinDate: '15 Mart 2025' },
-    { id: '2', username: 'user123', email: 'user123@example.com', joinDate: '18 Mart 2025' },
-    { id: '3', username: 'sinemaci', email: 'sinemaci@example.com', joinDate: '20 Mart 2025' },
   ];
 
   const movieCategories = [
@@ -63,31 +57,6 @@ const Dashboard = () => {
             </a>
           ))}
         </div>
-      </div>
-
-      {/* Kayıtlı Kullanıcılar */}
-      <div className="registered-users">
-        <h3 className="recent-activity__title">Son Kayıtlı Kullanıcılar</h3>
-        <table className="recent-activity__table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Kullanıcı Adı</th>
-              <th>E-posta</th>
-              <th>Katılım Tarihi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {registeredUsers.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.joinDate}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
 
       {/* Film Kategorileri */}
