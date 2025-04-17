@@ -1,4 +1,4 @@
-// src\components\ads\AdManager.tsx
+// C:\nextjs\nextsitem\frontend\src\components\ads\AdManager.tsx
 import { useEffect, useState } from 'react';
 
 interface AdsWindow extends Window {

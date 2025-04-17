@@ -1,4 +1,4 @@
-// src/components/ui/AllMovies.tsx
+// C:\nextjs\nextsitem\frontend\src\components\ui\AllMovies.tsx
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

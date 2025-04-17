@@ -1,14 +1,14 @@
-// src/components/ui/Navbar.tsx
+// src/components/ui/Navbar.tsx (Mevcut dosyanın güncellenmiş hali)
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FaBars, FaLock, FaSearch, FaUserPlus } from 'react-icons/fa';
+import { FaBars, FaLock, FaSearch, FaUserPlus, FaUserShield } from 'react-icons/fa';
 import { colors } from '../../assets/styles/colors';
 
 interface NavbarProps {
   onSearch: (searchTerm: string) => void;
-  onToggleSignup: () => void; // Modal için yeni prop
-  onToggleLogin: () => void;  // Modal için yeni prop
+  onToggleSignup: () => void;
+  onToggleLogin: () => void;
 }
 
 const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
@@ -16,6 +16,7 @@ const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -25,7 +26,9 @@ const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loggedIn);
     if (loggedIn) {
-      setUsername(localStorage.getItem('username') || '');
+      const storedUsername = localStorage.getItem('username') || '';
+      setUsername(storedUsername);
+      setIsAdmin(storedUsername === 'admin');
     }
   }, []);
 
@@ -44,8 +47,10 @@ const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
     setUsername('');
+    setIsAdmin(false);
     router.push('/');
   };
 
@@ -80,6 +85,15 @@ const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
               <span className="navbar__action-text" style={{ color: 'var(--lightGray)' }}>
                 Hoş geldin, {username}
               </span>
+              {isAdmin && (
+                <button
+                  className="navbar__action-btn"
+                  onClick={() => router.push('/admin')}
+                >
+                  <FaUserShield className="navbar__action-icon" />
+                  <span className="navbar__action-text">Admin Paneli</span>
+                </button>
+              )}
               <button className="navbar__action-btn" onClick={handleLogout}>
                 <FaLock className="navbar__action-icon" />
                 <span className="navbar__action-text">Çıkış Yap</span>
@@ -116,6 +130,15 @@ const Navbar = ({ onSearch, onToggleSignup, onToggleLogin }: NavbarProps) => {
               <span style={{ color: 'var(--lightGray)', textAlign: 'center' }}>
                 Hoş geldin, {username}
               </span>
+              {isAdmin && (
+                <button
+                  className="navbar__slider-btn"
+                  onClick={() => router.push('/admin')}
+                >
+                  <FaUserShield className="navbar__action-icon" />
+                  Admin Paneli
+                </button>
+              )}
               <button className="navbar__slider-btn" onClick={handleLogout}>
                 <FaLock className="navbar__action-icon" />
                 Çıkış Yap

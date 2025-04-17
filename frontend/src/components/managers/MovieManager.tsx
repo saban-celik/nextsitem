@@ -1,4 +1,4 @@
-// src/components/managers/MovieManager.tsx
+// C:\nextjs\nextsitem\frontend\src\components\managers\MovieManager.tsx
 import AllMovies from '../ui/AllMovies';
 import MovieGenres from '../ui/MovieGenres';
 import PopulerMovies from '../ui/PopulerMovies';

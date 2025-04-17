@@ -1,4 +1,4 @@
-// src/components/layouts/MainLayout.tsx
+// C:\nextjs\nextsitem\frontend\src\components\layouts\MainLayout.tsx
 import { ReactNode } from 'react';
 
 interface LayoutProps {

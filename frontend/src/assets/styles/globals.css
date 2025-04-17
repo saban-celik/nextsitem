@@ -1,4 +1,4 @@
-/*src\assets\styles\globals.css*/
+/*C:\nextjs\nextsitem\frontend\src\assets\styles\globals.css*/
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -19,6 +19,9 @@ body {
   margin: 0 auto;
   background-color: var(--darkGrayishBlue);
   border-radius: 8px;
+}.ad-banner {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* Navbar */

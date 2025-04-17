@@ -1,3 +1,4 @@
+//C:\nextjs\nextsitem\frontend\src\api\backendApi.ts
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
 
 const apiFetch = async (endpoint: string, options: RequestInit = {}) => {

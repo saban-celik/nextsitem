@@ -1,4 +1,4 @@
-// src/assets/styles/colors.ts
+// C:\nextjs\nextsitem\frontend\src\assets\styles\colors.ts
 export const colors = {
   darkGrayishBlue: '#111827',
   lightGray: '#e5e7eb',

@@ -1,3 +1,4 @@
+//C:\nextjs\nextsitem\frontend\src\components\ui\SignupModal.tsx
 import Image from 'next/image';
 import { FormEvent, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
